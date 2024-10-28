@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Advising Bot</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap');
+      body {
+        font-family: 'Open Sans', sans-serif;
+      }
+    </style>
+    <script>
+      function toggleMenu() {
+        const menu = document.getElementById('mobile-menu');
+        menu.classList.toggle('hidden');
+        menu.classList.toggle('opacity-0'); // Adds a fade effect
+        menu.classList.toggle('translate-y-[-20px]'); // Slide-down effect
+      }
+    </script>
+  </head>
+  <body class="bg-white">
+    <!-- Header -->
+    <header class="bg-white shadow-md">
+      <div class="container mx-auto flex items-center justify-between py-2 px-3 md:py-3 md:px-4 lg:py-2">
+        <!-- Logo -->
+        <div class="w-1/2 md:w-auto">
+          <a href="/" aria-label="Home Page">
+            <img
+              id="logo-image"
+              src="./assets/bhcc_logo.png"
+              alt="Bunker Hill Community College - imagine the possibilities"
+              class="h-auto w-[80px] sm:w-[100px] md:w-[140px] lg:w-[160px]" 
+          </a>
+        </div>
+        <!-- Navigation Links -->
+        <nav class="hidden md:flex space-x-2 lg:space-x-4 text-blue-600 text-xs lg:text-sm font-semibold">
+          <a href="https://outlook.com/owa/bhccbos.onmicrosoft.com" class="hover:underline">Email</a>
+          <a href="https://www.bhcc.edu/currentstudents/mybhcc/" class="hover:underline">myBHCC</a>
+          <a href="https://online.bhcc.edu/" class="hover:underline">Moodle</a>
+          <a href="https://www.bhcc.edu/translate/" class="hover:underline">Translate</a>
+          <a href="https://www.bhcc.edu/sitemap/" class="hover:underline">A-Z Index</a>
+        </nav>
+        <!-- Hamburger Menu Button, aligned to the left -->
+        <div class="md:hidden flex justify-end w-1/2">
+          <button aria-label="Menu" onclick="toggleMenu()">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              class="w-6 h-6 sm:w-5 sm:h-5 text-blue-600" 
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16"
+              />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Mobile Menu (hidden by default, appears below the header) -->
+    <div
+      id="mobile-menu"
+      class="hidden opacity-0 transition-opacity duration-300 ease-in-out transform translate-y-[-20px] bg-white shadow-md md:hidden"
+    >
+      <nav class="flex flex-col items-start space-y-2 px-4 py-2 text-blue-600 text-sm font-semibold">
+        <a href="https://outlook.com/owa/bhccbos.onmicrosoft.com" class="hover:underline">Email</a>
+        <a href="https://www.bhcc.edu/currentstudents/mybhcc/" class="hover:underline">myBHCC</a>
+        <a href="https://online.bhcc.edu/" class="hover:underline">Moodle</a>
+        <a href="https://www.bhcc.edu/translate/" class="hover:underline">Translate</a>
+        <a href="https://www.bhcc.edu/sitemap/" class="hover:underline">A-Z Index</a>
+      </nav>
+    </div>
+
+<!-- Chatbot Interface -->
+<div class="flex flex-col mt-0.5 max-w-lg w-full mx-auto h-[93vh] md:h-[90vh] lg:h-[90vh]  shadow-lg overflow-hidden border border-gray-300">
+    <!-- Chat Area -->
+    <div id="chat-window" class="flex-grow p-4 overflow-y-auto bg-transparent">
+      <!-- Example messages -->
+      <div class="mb-4">
+        <div class="flex">
+          <div class="bg-blue-100 text-blue-900 p-3 rounded-lg max-w-[70%] lg:max-w-[60%] text-sm md:text-base shadow">
+            Hello! How can I assist you today?
+          </div>
+        </div>
+      </div>
+  
+      <div class="mb-4 text-right">
+        <div class="flex justify-end">
+          <div class="bg-green-100 text-green-900 p-3 rounded-lg max-w-[70%] lg:max-w-[60%] text-sm md:text-base shadow">
+            I need help with my schedule.
+          </div>
+        </div>
+      </div>
+      <!-- End of example messages -->
+    </div>
+  
+    <!-- Input Area -->
+    <div class="bg-transparent p-2 md:p-3 border-t border-gray-300">
+      <div class="flex items-center">
+        <input
+          id="chat-input"
+          type="text"
+          placeholder="Type your message..."
+          class="flex-grow p-2 border border-gray-300 rounded-full focus:outline-none focus:ring focus:border-blue-300 text-sm md:text-base bg-white"
+        />
+        <button id="send-btn" class="ml-2 p-2 bg-blue-600 text-white rounded-full hover:bg-blue-700 focus:ring focus:ring-blue-300">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-5 h-5 md:w-6 md:h-6">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M12 5l7 7-7 7" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+  
+ <!-- Footer -->
+<footer class="bg-gray-800 text-gray-400 py-6">
+    <div class="container mx-auto px-4 md:px-8">
+        <div class="flex flex-col items-center md:items-start">
+            <a href="">
+              <img
+                id="footer-logo-image"
+                src="./assets/BHCClogo_WHITEc-2.png"
+                alt="Bunker Hill Community College"
+                class="w-50 h-20 mb-3"
+              />
+            </a>
+          </div>
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+        <!-- Logo Section -->
+    
+  
+        <!-- Campus Info Section -->
+        <div class="text-center md:text-left space-y-4 text-xs">
+          <a href="https://www.bhcc.edu/campuses/visitingcharlestown/" class="block">
+            <h2 class="text-base font-semibold text-white">Charlestown Campus</h2>
+            <ul class="space-y-1">
+              <li>250 New Rutherford Avenue</li>
+              <li>Boston, Massachusetts 02129</li>
+              <li>Phone: 617-228-2000</li>
+              <li>TTY: 617-242-2365</li>
+            </ul>
+          </a>
+  
+          <a href="https://www.bhcc.edu/chelsea/" class="block">
+            <h2 class="text-base font-semibold text-white">Chelsea Campus</h2>
+            <ul class="space-y-1">
+              <li>70 Everett Avenue</li>
+              <li>Chelsea, Massachusetts 02150</li>
+              <li>Phone: 617-228-2101</li>
+            </ul>
+          </a>
+        </div>
+  
+        <!-- About BHCC Section -->
+        <div class="text-center md:text-left text-xs">
+          <h2 class="text-base font-semibold text-white">About BHCC</h2>
+          <ul class="space-y-1">
+            <li><a href="https://www.bhcc.edu/communityfriends/" class="hover:underline">Who We Are</a></li>
+            <li><a href="https://www.bhcc.edu/missionvisionandgoals/" class="hover:underline">Mission, Vision & Goals</a></li>
+            <li><a href="https://www.bhcc.edu/initiatives/" class="hover:underline">College Initiatives</a></li>
+            <li><a href="https://www.bhcc.edu/hr/availablepositions/" class="hover:underline">Employment Opportunities</a></li>
+            <li><a href="https://www.bhcc.edu/handbook/bhcclocationsandtransportation/" class="hover:underline">Locations & Public Transportation</a></li>
+            <li><a href="https://www.bhcc.edu/strategicplans/" class="hover:underline">Strategic Plans</a></li>
+          </ul>
+        </div>
+  
+        <!-- Commitments Section -->
+        <div class="text-center md:text-left text-xs">
+          <h2 class="text-base font-semibold text-white">Our Commitments to You</h2>
+          <ul class="space-y-1">
+            <li><a href="https://www.bhcc.edu/eeo/" class="hover:underline">Affirmative Action and Equal Opportunity</a></li>
+            <li><a href="https://www.bhcc.edu/emergency/" class="hover:underline">Emergency Alerts & Procedures</a></li>
+            <li><a href="https://www.bhcc.edu/equitydiversityinclusion/" class="hover:underline">Equity, Diversity & Inclusion</a></li>
+            <li><a href="https://go.boarddocs.com/ma/bhcc/Board.nsf/goto?open&amp;id=BFHU497A3423" class="hover:underline">Policy and Procedures</a></li>
+            <li><a href="https://www.bhcc.edu/privacypolicy/" class="hover:underline">Privacy Policy</a></li>
+            <li><a href="https://www.bhcc.edu/publicrecords/" class="hover:underline" target="_blank">Public Records Request</a></li>
+            <li><a href="https://www.bhcc.edu/publicsafety/" class="hover:underline">Public Safety</a></li>
+            <li><a href="https://www.bhcc.edu/emergencyassistancefund/" class="hover:underline">Student Emergency Fund</a></li>
+            <li><a href="https://www.bhcc.edu/web-accessibility/" class="hover:underline">Web Accessibility</a></li>
+          </ul>
+        </div>
+      </div>
+  
+      <!-- Social Media Links and Copyright -->
+      <div class="mt-8 border-t border-gray-700 pt-4">
+        <div class="flex flex-col md:flex-row justify-between items-center">
+          <!-- Social Media Links -->
+          <div class="flex space-x-4 mb-4 md:mb-0">
+            <a href="https://www.facebook.com/BHCCBoston" target="_blank" class="hover:text-gray-400" aria-label="Facebook">
+              <i class="fab fa-facebook-square fa-lg"></i>
+            </a>
+            <a href="https://www.flickr.com/photos/bhccboston/" target="_blank" class="hover:text-gray-400" aria-label="Flickr">
+              <i class="fab fa-flickr fa-lg"></i>
+            </a>
+            <a href="https://instagram.com/bhccboston/" target="_blank" class="hover:text-gray-400" aria-label="Instagram">
+              <i class="fab fa-instagram-square fa-lg"></i>
+            </a>
+            <a href="https://www.linkedin.com/company/7710" target="_blank" class="hover:text-gray-400" aria-label="LinkedIn">
+              <i class="fab fa-linkedin fa-lg"></i>
+            </a>
+            <a href="/news/rss.xml" target="_blank" class="hover:text-gray-400" aria-label="RSS">
+              <i class="fas fa-rss-square fa-lg"></i>
+            </a>
+            <a href="https://twitter.com/BHCCBoston" target="_blank" class="hover:text-gray-400" aria-label="Twitter">
+              <i class="fab fa-twitter-square fa-lg"></i>
+            </a>
+            <a href="https://www.youtube.com/user/BHCCboston" target="_blank" class="hover:text-gray-400" aria-label="YouTube">
+              <i class="fab fa-youtube-square fa-lg"></i>
+            </a>
+          </div>
+  
+          <!-- Copyright -->
+          <div class="text-center text-xs text-gray-500 mt-4 md:mt-0">
+            <p>&copy; 2024 Bunker Hill Community College</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+  
+  <!-- Add Font Awesome -->
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  
+
+
+  <script>
+    const chatWindow = document.getElementById('chat-window');
+    const chatInput = document.getElementById('chat-input');
+    const sendBtn = document.getElementById('send-btn');
+  
+    // Example function to handle message sending
+    sendBtn.addEventListener('click', () => {
+      const userMessage = chatInput.value.trim();
+      if (userMessage) {
+        // Create user message bubble
+        const userMessageBubble = document.createElement('div');
+        userMessageBubble.classList.add('mb-4', 'text-right');
+        userMessageBubble.innerHTML = `
+          <div class="flex justify-end">
+            <div class="bg-green-100 text-green-900 p-3 rounded-lg max-w-[70%] lg:max-w-[60%] text-sm md:text-base shadow">${userMessage}</div>
+          </div>
+        `;
+        chatWindow.appendChild(userMessageBubble);
+  
+        // Clear input field
+        chatInput.value = '';
+  
+        // Scroll chat window to the bottom
+        chatWindow.scrollTop = chatWindow.scrollHeight;
+  
+        // Simulate bot response after 1 second
+        setTimeout(() => {
+          const botMessageBubble = document.createElement('div');
+          botMessageBubble.classList.add('mb-4');
+          botMessageBubble.innerHTML = `
+            <div class="flex">
+              <div class="bg-blue-100 text-blue-900 p-3 rounded-lg max-w-[70%] lg:max-w-[60%] text-sm md:text-base shadow">Thanks for your message! How else can I help?</div>
+            </div>
+          `;
+          chatWindow.appendChild(botMessageBubble);
+          chatWindow.scrollTop = chatWindow.scrollHeight;
+        }, 1000);
+      }
+    });
+  </script>
+  
+  
+  
+  </body>
+</html>
